@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">book-a-room</string>
+    <string name="room_image">Room Image</string>
+    <string name="room_book_text">Book!</string>
 </resources>
