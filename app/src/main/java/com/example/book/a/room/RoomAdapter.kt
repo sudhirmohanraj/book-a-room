@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import timber.log.Timber
 import java.net.URL
 
 class RoomAdapter() : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
@@ -36,7 +37,7 @@ class RoomAdapter() : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
             book.setOnClickListener(View.OnClickListener {
                 coroutineScope.launch {
                     val response = bookRoom()
-                    println("response $response")
+                    Timber.d("Response from RoomAdapter#bookRoom $response")
                 }
             })
         }

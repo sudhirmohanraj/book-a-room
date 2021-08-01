@@ -63,9 +63,9 @@ class RoomViewModel : ViewModel() {
                     .getInputStream()
                     .bufferedReader()
                     .readText()
-                val placesArr = JSONObject(body).getJSONArray("rooms")
-                for (i in 0 until placesArr.length()) {
-                    placesArr.getJSONObject(i).apply {
+                val roomsArr = JSONObject(body).getJSONArray("rooms")
+                for (i in 0 until roomsArr.length()) {
+                    roomsArr.getJSONObject(i).apply {
                         rooms.add(
                             Room(
                                 getString("name"),
