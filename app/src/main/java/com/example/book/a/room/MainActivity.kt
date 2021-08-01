@@ -1,8 +1,8 @@
 package com.example.book.a.room
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var roomViewModel: RoomViewModel
+    private lateinit var roomViewModel: RoomViewModel
 
     private lateinit var recyclerView: RecyclerView
+
+    private val adapter = RoomAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         setUpRecyclerView()
     }
 
+
+
     private fun setUpRecyclerView() {
         recyclerView = findViewById(R.id.list_of_rooms)
 
@@ -31,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val output = roomViewModel.listOfRooms
-        println(output)
+        recyclerView.adapter = adapter
+
+        roomViewModel?.getRooms()?.observe(this, Observer {
+          adapter.setData(it)
+        })
     }
 }

@@ -2,4 +2,6 @@
     <string name="app_name">book-a-room</string>
     <string name="room_image">Room Image</string>
     <string name="room_book_text">Book!</string>
+    <string name="room_spots">Available Spots</string>
+    <string name="room_name">Rooom Names</string>
 </resources>
